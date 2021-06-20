@@ -1,6 +1,8 @@
 package com.example.rentparking.service;
 
 import com.example.rentparking.entity.*;
+import com.example.rentparking.entity.data.dto.SocialUser;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -10,11 +12,15 @@ public interface UserService {
 
 	User save(User user);
 
+	User saveSocialUser(SocialUser socialUser);
+
 	User update(User user);
 
 	User findById(Integer userId);
 
 	User findByUsername(String username);
+
+	boolean findByUsernameExist(String username);
 
 	void deleteById(Integer userId);
 

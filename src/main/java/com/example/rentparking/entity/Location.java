@@ -1,8 +1,5 @@
 package com.example.rentparking.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.time.*;
-import java.util.*;
 import javax.persistence.*;
 import lombok.*;
 
@@ -19,6 +16,8 @@ public class Location extends Auditable {
 	private Integer id;
 	@Column(name = "NAME")
 	private String name;
+	@Column(name = "ADDRESS")
+	private String address;
 	@Column(name = "LONGITUDE")
 	private Double longitude;
 	@Column(name = "LATITUDE")

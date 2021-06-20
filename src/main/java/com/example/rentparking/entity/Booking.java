@@ -1,5 +1,6 @@
 package com.example.rentparking.entity;
 
+import com.example.rentparking.entity.data.BookingStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.*;
 import java.util.*;
@@ -28,6 +29,7 @@ public class Booking extends Auditable {
 	@Column(name = "TO")
 	private LocalDateTime to;
 	@Column(name = "BOOKING_STATUS")
-	private String bookingStatus;
+	@Enumerated(EnumType.STRING)
+	private BookingStatus bookingStatus;
 	
 }

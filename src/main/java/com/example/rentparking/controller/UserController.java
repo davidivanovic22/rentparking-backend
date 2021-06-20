@@ -1,11 +1,13 @@
 package com.example.rentparking.controller;
 
 import com.example.rentparking.entity.*;
+import com.example.rentparking.entity.data.dto.SocialUser;
 import com.example.rentparking.service.*;
 import java.util.List;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,6 +24,11 @@ public class UserController {
 	@GetMapping("/{userId}")
 	public ResponseEntity<User> getUserById(@PathVariable Integer userId) {
 		return ResponseEntity.ok(userService.findById(userId));
+	}
+
+	@PostMapping("/socialUser")
+	public ResponseEntity<User> saveSocialUser(@RequestBody SocialUser socialUser) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveSocialUser(socialUser));
 	}
 
 	@PostMapping
@@ -59,5 +66,9 @@ public class UserController {
 		return ResponseEntity.ok(userService.deleteRolesById(userId, roles));
 	}
 
+	@GetMapping("/logged-in")
+	public ResponseEntity<User> loggedIn(@AuthenticationPrincipal User user) {
+		return ResponseEntity.ok(user);
+	}
 }
 

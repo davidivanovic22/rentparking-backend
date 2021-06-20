@@ -38,21 +38,29 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 		User user = userRepository.findByUsername(username);
 		System.out.println(user);
 		if (user == null) {
+			System.out.println("Ovdeeee1");
 			throw new BadCredentialsException("Invalid username or password");
 		}
 		if (!user.isEnabled()) {
+			System.out.println("Ovdeeee2");
+
 			throw new DisabledException("Account disabled");
 		}
 		// dev authentication override
 		if (Boolean.parseBoolean(securityDisabled) || Arrays.asList(env.getActiveProfiles()).contains("dev")) {
+			System.out.println("Ovdeeee3");
+
 			return new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
 		}
 		if (user.getPassword() == null) {
+			System.out.println("Ovdeeee4");
 			user.setPassword(passwordEncoder.encode(user.getUsername() + "123"));
 			userRepository.save(user);
 		}
 
 		if (password == null || !passwordEncoder.matches(password, user.getPassword())) {
+			System.out.println("Ovdeeee5");
+
 			throw new BadCredentialsException("Invalid username or password");
 		}
 		return new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
