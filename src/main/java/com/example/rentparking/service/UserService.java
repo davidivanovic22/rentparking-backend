@@ -20,8 +20,6 @@ public interface UserService {
 
 	User findByUsername(String username);
 
-	boolean findByUsernameExist(String username);
-
 	void deleteById(Integer userId);
 
 	List<Role> findAllRolesById(Integer userId);

@@ -18,6 +18,8 @@ public class Location extends Auditable {
 	private String name;
 	@Column(name = "ADDRESS")
 	private String address;
+	@Column(name = "CITY")
+	private String city;
 	@Column(name = "LONGITUDE")
 	private Double longitude;
 	@Column(name = "LATITUDE")

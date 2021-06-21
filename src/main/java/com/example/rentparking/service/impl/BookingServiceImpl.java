@@ -1,6 +1,7 @@
 package com.example.rentparking.service.impl;
 
 import com.example.rentparking.entity.*;
+import com.example.rentparking.entity.data.BookingStatus;
 import com.example.rentparking.repository.BookingRepository;
 import com.example.rentparking.service.BookingService;
 import java.util.List;
@@ -40,5 +41,13 @@ public class BookingServiceImpl implements BookingService {
 		bookingRepository.deleteById(bookingId);
 	}
 
+	@Override
+	public List<Booking> findAllByBookingStatusAndLocationName(BookingStatus bookingStatus, String name) {
+		return bookingRepository.findAllByBookingStatusAndParking_Location_Name(bookingStatus, name);
+	}
 
+	@Override
+	public List<Booking> findAllByBookingStatusAndLocationCity(BookingStatus bookingStatus, String city) {
+		return bookingRepository.findAllByBookingStatusAndParking_Location_City(bookingStatus, city);
+	}
 }

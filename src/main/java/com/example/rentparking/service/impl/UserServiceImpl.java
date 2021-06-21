@@ -33,11 +33,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean findByUsernameExist(String username) {
-        return userRepository.findByUsername(username) != null;
-    }
-
-    @Override
     public User save(User user) {
         return userRepository.save(user);
     }
@@ -49,7 +44,7 @@ public class UserServiceImpl implements UserService {
         user.setLastName(socialUser.getLastName().trim());
         user.setUsername(socialUser.getEmail().split("@")[0]);
         user.setEmail(socialUser.getEmail());
-        if (findByUsernameExist(user.getUsername())) {
+        if (findByUsername(user.getUsername()) != null) {
             return findByUsername(user.getUsername());
         } else {
             return save(user);

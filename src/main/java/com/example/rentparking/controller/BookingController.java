@@ -1,6 +1,7 @@
 package com.example.rentparking.controller;
 
 import com.example.rentparking.entity.*;
+import com.example.rentparking.entity.data.BookingStatus;
 import com.example.rentparking.service.*;
 import java.util.List;
 import lombok.*;
@@ -22,6 +23,11 @@ public class BookingController {
 	@GetMapping("/{bookingId}")
 	public ResponseEntity<Booking> getBookingById(@PathVariable Integer bookingId) {
 		return ResponseEntity.ok(bookingService.findById(bookingId));
+	}
+
+	@GetMapping("/{bookingStatus}/{city}/booking_status_and_location_city")
+	public ResponseEntity<List<Booking>> getAllByBookingStatusAndLocationCity(@PathVariable BookingStatus bookingStatus, @PathVariable String city) {
+		return ResponseEntity.ok(bookingService.findAllByBookingStatusAndLocationCity(bookingStatus, city));
 	}
 
 	@PostMapping
