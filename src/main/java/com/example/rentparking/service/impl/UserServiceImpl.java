@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,19 +38,19 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    @Override
-    public User saveSocialUser(SocialUser socialUser) {
-        User user = new User();
-        user.setFirstName(socialUser.getFirstName());
-        user.setLastName(socialUser.getLastName().trim());
-        user.setUsername(socialUser.getEmail().split("@")[0]);
-        user.setEmail(socialUser.getEmail());
-        if (findByUsername(user.getUsername()) != null) {
-            return findByUsername(user.getUsername());
-        } else {
-            return save(user);
-        }
-    }
+//    @Override
+//    public User saveSocialUser(SocialUser socialUser) {
+//        User user = new User();
+//        user.setFirstName(socialUser.getFirstName());
+//        user.setLastName(socialUser.getLastName().trim());
+//        user.setUsername(socialUser.getEmail().split("@")[0]);
+//        user.setEmail(socialUser.getEmail());
+//        if (findByUsername(user.getUsername()) != null) {
+//            return findByUsername(user.getUsername());
+//        } else {
+//            return save(user);
+//        }
+//    }
 
     @Override
     public User update(User user) {

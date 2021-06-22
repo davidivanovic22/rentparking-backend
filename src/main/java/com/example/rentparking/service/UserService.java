@@ -12,7 +12,7 @@ public interface UserService {
 
 	User save(User user);
 
-	User saveSocialUser(SocialUser socialUser);
+//	User saveSocialUser(SocialUser socialUser);
 
 	User update(User user);
 

@@ -1,9 +1,9 @@
 package com.example.rentparking.service;
 
 import com.example.rentparking.entity.*;
-import com.example.rentparking.entity.data.BookingStatus;
+import com.example.rentparking.entity.data.domen.BookingStatus;
+import com.example.rentparking.entity.data.dto.BookingDTO;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface BookingService {
@@ -21,5 +21,7 @@ public interface BookingService {
 	List<Booking> findAllByBookingStatusAndLocationName(BookingStatus bookingStatus, String name);
 
 	List<Booking> findAllByBookingStatusAndLocationCity(BookingStatus bookingStatus, String city);
+
+List<BookingDTO> findAllBookingDTOByCity(String city);
 
 }

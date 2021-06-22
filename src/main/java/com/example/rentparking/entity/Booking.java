@@ -1,9 +1,8 @@
 package com.example.rentparking.entity;
 
-import com.example.rentparking.entity.data.BookingStatus;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.rentparking.entity.data.domen.BookingStatus;
+
 import java.time.*;
-import java.util.*;
 import javax.persistence.*;
 import lombok.*;
 

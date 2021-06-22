@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import com.example.rentparking.entity.User;
 import com.example.rentparking.repository.UserRepository;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 
@@ -52,11 +53,11 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 
 			return new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
 		}
-		if (user.getPassword() == null) {
-			System.out.println("Ovdeeee4");
-			user.setPassword(passwordEncoder.encode(user.getUsername() + "123"));
-			userRepository.save(user);
-		}
+//		if (user.getPassword() == null) {
+//			System.out.println("Ovdeeee4");
+//			user.setPassword(passwordEncoder.encode(user.getUsername() + "123"));
+//			userRepository.save(user);
+//		}
 
 		if (password == null || !passwordEncoder.matches(password, user.getPassword())) {
 			System.out.println("Ovdeeee5");
@@ -65,4 +66,5 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 		}
 		return new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
 	}
+
 }

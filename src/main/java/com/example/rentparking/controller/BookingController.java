@@ -1,7 +1,9 @@
 package com.example.rentparking.controller;
 
 import com.example.rentparking.entity.*;
-import com.example.rentparking.entity.data.BookingStatus;
+import com.example.rentparking.entity.data.domen.BookingStatus;
+import com.example.rentparking.entity.data.dto.BookingDTO;
+import com.example.rentparking.repository.views.BookingDTOView;
 import com.example.rentparking.service.*;
 import java.util.List;
 import lombok.*;
@@ -28,6 +30,11 @@ public class BookingController {
 	@GetMapping("/{bookingStatus}/{city}/booking_status_and_location_city")
 	public ResponseEntity<List<Booking>> getAllByBookingStatusAndLocationCity(@PathVariable BookingStatus bookingStatus, @PathVariable String city) {
 		return ResponseEntity.ok(bookingService.findAllByBookingStatusAndLocationCity(bookingStatus, city));
+	}
+
+	@GetMapping("/{city}/booking_dto_city")
+	public ResponseEntity<List<BookingDTO>> findAllBookingDTOByCity(@PathVariable String city) {
+		return ResponseEntity.ok(bookingService.findAllBookingDTOByCity(city));
 	}
 
 	@PostMapping

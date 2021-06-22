@@ -26,10 +26,10 @@ public class UserController {
 		return ResponseEntity.ok(userService.findById(userId));
 	}
 
-	@PostMapping("/socialUser")
-	public ResponseEntity<User> saveSocialUser(@RequestBody SocialUser socialUser) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveSocialUser(socialUser));
-	}
+//	@PostMapping("/socialUser")
+//	public ResponseEntity<User> saveSocialUser(@RequestBody SocialUser socialUser) {
+//		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveSocialUser(socialUser));
+//	}
 
 	@PostMapping
 	public ResponseEntity<User> saveUser(@RequestBody User user) {

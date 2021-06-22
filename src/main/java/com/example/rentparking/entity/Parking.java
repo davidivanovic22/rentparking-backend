@@ -20,8 +20,13 @@ public class Parking extends Auditable {
 	@JoinColumn(name = "LOCATION_ID", referencedColumnName = "LOCATION_ID")
 	@ManyToOne
 	private Location location;
+	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+	@ManyToOne
+	private User user;
 	@Column(name = "NAME")
 	private String name;
+	@Column(name = "PARKING_PIC")
+	private String parkingPic;
 	@Column(name = "DESCRIPTION")
 	private String description;
 	@Column(name = "LENGTH")
