@@ -23,9 +23,9 @@ public class Booking extends Auditable {
 	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
 	@ManyToOne
 	private User user;
-	@Column(name = "FROM")
+	@Column(name = "`FROM`")
 	private LocalDateTime from;
-	@Column(name = "TO")
+	@Column(name = "`TO`")
 	private LocalDateTime to;
 	@Column(name = "BOOKING_STATUS")
 	@Enumerated(EnumType.STRING)

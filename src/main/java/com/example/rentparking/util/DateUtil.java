@@ -3,8 +3,11 @@ package com.example.rentparking.util;
 
 //import rs.ac.metropolitan.kanbanbackend.entity.UserCategory;
 
+import com.example.rentparking.entity.data.dto.BookingDTO;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Comparator;
 import java.util.Date;
@@ -26,25 +29,23 @@ public class DateUtil {
 
     public static Date presentMonday() {
         ZoneId defaultZoneId = ZoneId.systemDefault();
-        LocalDate localeDate =  LocalDate.now().with(DayOfWeek.MONDAY);
+        LocalDate localeDate = LocalDate.now().with(DayOfWeek.MONDAY);
         return Date.from(localeDate.atStartOfDay(defaultZoneId).toInstant());
     }
 
     public static Date presentFriday() {
         ZoneId defaultZoneId = ZoneId.systemDefault();
-        LocalDate localeDate =  LocalDate.now().with(DayOfWeek.FRIDAY);
+        LocalDate localeDate = LocalDate.now().with(DayOfWeek.FRIDAY);
         return Date.from(localeDate.atStartOfDay(defaultZoneId).toInstant());
     }
 
-//    public static Comparator<UserCategory> compareUserCategoryDate() {
-//        return (o1, o2) -> {
-//            if (o1.getStartDate().before(o2.getStartDate())) {
-//                return -1;
-//            } else if (o1.getStartDate().after(o2.getStartDate())) {
-//                return 1;
-//            } else {
-//                return 0;
-//            }
-//        };
-//    }
+    public static boolean compareFromToDateTime(BookingDTO bookingDTO, LocalDateTime from, LocalDateTime to) {
+        System.out.println(bookingDTO);
+        System.out.println(from.isBefore(bookingDTO.getBooking().getFrom()));
+//        System.out.println(from.equals(bookingDTO.getBooking().getFrom()));
+        System.out.println(to.isAfter(bookingDTO.getBooking().getTo()));
+//        System.out.println(to.equals(bookingDTO.getBooking().getTo()));
+        return (from.isBefore(bookingDTO.getBooking().getFrom())
+                || to.isAfter(bookingDTO.getBooking().getTo()));
+    }
 }

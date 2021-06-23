@@ -8,6 +8,8 @@ public interface ParkingService {
 
 	List<Parking> findAll();
 
+	List<Parking> findAllByCity(String city);
+
 	Parking save(Parking parking);
 
 	Parking update(Parking parking);

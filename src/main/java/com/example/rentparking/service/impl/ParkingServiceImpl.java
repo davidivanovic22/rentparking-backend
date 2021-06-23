@@ -20,6 +20,11 @@ public class ParkingServiceImpl implements ParkingService {
 	}
 
 	@Override
+	public List<Parking> findAllByCity(String city) {
+		return parkingRepository.findAllByLocation_City(city);
+	}
+
+	@Override
 	public Parking findById(Integer parkingId) {
 		return parkingRepository.findById(parkingId)
 				.orElseThrow(() -> new NoSuchElementException("ParkingService.notFound"));
