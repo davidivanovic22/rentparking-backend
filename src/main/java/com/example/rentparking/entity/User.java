@@ -29,6 +29,8 @@ public class User extends Auditable  implements UserDetails {
 	private String username;
 	@Column(name = "PASSWORD")
 	private String password;
+	@Column(name = "PROF_PIC")
+	private String profPic;
 	@Column(name = "CVV")
 	private String cvv;
 	@Column(name = "BANK_ACCOUNT")

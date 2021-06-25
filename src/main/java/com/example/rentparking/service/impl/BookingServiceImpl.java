@@ -87,7 +87,6 @@ public class BookingServiceImpl implements BookingService {
         List<BookingDTOView> bookingDTOViews = bookingRepository.findAllBookingDTOByCity(city);
         List<BookingDTO> bookingDTOList = new ArrayList<>();
         List<BookingDTO> bookingDTOList1 = new ArrayList<>();
-
         bookingDTOViews.forEach(bookingDTOView -> {
             BookingDTO bookingDTO = new BookingDTO();
             if (bookingDTOView.getBookingId() != null) {
@@ -111,6 +110,7 @@ public class BookingServiceImpl implements BookingService {
             });
             return bookingDTOList1;
         } else {
+            System.out.println(bookingDTOList);
             return bookingDTOList;
         }
     }
