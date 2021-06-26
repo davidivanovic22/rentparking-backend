@@ -55,6 +55,11 @@ public class BookingController {
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.save(booking));
     }
 
+    @PostMapping("/booking-dto")
+    public ResponseEntity<Booking> saveBookingDTO(@RequestBody BookingDTO bookingDTO) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.saveBookingDTO(bookingDTO));
+    }
+
     @PutMapping
     public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking) {
         return ResponseEntity.ok(bookingService.update(booking));

@@ -13,6 +13,8 @@ public interface BookingService {
 
     Booking save(Booking booking);
 
+    Booking saveBookingDTO(BookingDTO bookingDTO);
+
     void automaticChangeBookingStatus();
 
     Booking update(Booking booking);

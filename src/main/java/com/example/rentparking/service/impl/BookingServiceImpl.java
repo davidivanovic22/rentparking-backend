@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-
 import com.example.rentparking.service.ParkingService;
 import com.example.rentparking.util.DateUtil;
+import com.fasterxml.jackson.core.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +45,26 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking save(Booking booking) {
         return bookingRepository.save(booking);
+    }
+
+    @Override
+    public Booking saveBookingDTO(BookingDTO bookingDTO) {
+        Booking booking;
+        Parking parking = bookingDTO.getParking();
+        System.out.println(bookingDTO.getBooking() + " BOOOOOKOKOKO");
+        if (bookingDTO.getBooking() != null) {
+            booking = bookingRepository.findByParking_Id(parking.getId());
+            booking.setBookingStatus(BookingStatus.RESERVED);
+        } else {
+            booking = new Booking();
+            booking.setParking(parking);
+            booking.setUser(bookingDTO.getBooking().getUser());
+            booking.setFrom(bookingDTO.getBooking().getFrom());
+            booking.setTo(bookingDTO.getBooking().getTo());
+            booking.setBookingStatus(BookingStatus.RESERVED);
+        }
+
+        return save(booking);
     }
 
     @Override

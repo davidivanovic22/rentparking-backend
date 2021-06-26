@@ -14,6 +14,7 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     List<Booking> findAllByBookingStatusAndParking_Location_City(BookingStatus bookingStatus, String city);
     List<Booking> findAllByParking_Location_City(String city);
     List<Booking> findAllByUser_id(Integer userId);
+    Booking findByParking_Id(Integer parkingId);
 
     @Query(value = "select p.parking_id, b.booking_id from booking b\n" +
             "right join parking p on p.parking_id = b.parking_id\n" +
