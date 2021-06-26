@@ -5,6 +5,7 @@ import com.example.rentparking.entity.Booking;
 import com.example.rentparking.entity.User;
 import com.example.rentparking.exception.http.HttpUnauthorizedException;
 import com.example.rentparking.service.BookingService;
+import com.example.rentparking.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,6 +20,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LoggedInUserController {
 private final BookingService bookingService;
+private final UserService userService;
+
+
+    @GetMapping
+    public ResponseEntity<User> getLoggedInUser(@AuthenticationPrincipal User user) {
+        if (user == null) throw new HttpUnauthorizedException();
+        return ResponseEntity.ok(user);
+    }
 
     @GetMapping("/bookings")
     public ResponseEntity<List<Booking>> getAllBookingForLoggedInUser(@AuthenticationPrincipal User user) {
